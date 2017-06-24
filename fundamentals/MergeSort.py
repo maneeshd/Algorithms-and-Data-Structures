@@ -53,4 +53,3 @@ if __name__ == '__main__':
     print("-" * len("Merge Sort"))
     t = Timer(main)
     print("\nAverage sorting time for 100000 elements in 10 runs = %f Seconds" % (t.timeit(10) / 10))
-
