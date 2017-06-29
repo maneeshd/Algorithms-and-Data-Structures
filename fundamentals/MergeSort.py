@@ -3,7 +3,7 @@
 @email: maneeshd77@gmail.com
 @date: 24/6/17
 
-Merge Sort -> O(nlog n)
+Worst Case Analysis: Merge Sort -> O(nlog n)
 """
 from random import randint
 from timeit import Timer, default_timer
@@ -43,7 +43,7 @@ def merge_sort(data):
 
 def main():
     start = default_timer()
-    data = [randint(1, 10) + i for i in range(100001)]
+    data = [i for i in range(100000, 0, -1)]    # Worst Case Input (Reverse Sorted)
     merge_sort(data)
     print("Sort Time = %f Seconds" % (default_timer() - start))
 
