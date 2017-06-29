@@ -3,9 +3,8 @@
 @email: maneeshd77@gmail.com
 @date: 22/6/17
 
-Insertion Sort -> O(n^2)
+Worst Case Analysis: Insertion Sort -> O(n^2)
 """
-from random import randint
 from timeit import Timer, default_timer
 
 
@@ -21,7 +20,7 @@ def insertion_sort(data):
 
 def main():
     start = default_timer()
-    data = [randint(1, 10) + i for i in range(100001)]
+    data = [i for i in range(10000, 0, -1)]    # Worst Case Input(Reverse Sorted)
     insertion_sort(data)
     print("Sort Time = %f Seconds" % (default_timer() - start))
 
