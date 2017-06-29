@@ -5,7 +5,6 @@
 
 Worst Case Analysis: Merge Sort -> O(nlog n)
 """
-from random import randint
 from timeit import Timer, default_timer
 
 
