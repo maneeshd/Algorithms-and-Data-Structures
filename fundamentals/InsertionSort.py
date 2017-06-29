@@ -29,4 +29,4 @@ if __name__ == '__main__':
     print("Insertion Sort")
     print("-" * len("Insertion Sort"))
     t = Timer(main)
-    print("\nAverage sorting time for 100000 elements in 10 runs = %f Seconds" % (t.timeit(10)/10))
+    print("\nAverage sorting time for 10000 elements in 10 runs = %f Seconds" % (t.timeit(10)/10))
