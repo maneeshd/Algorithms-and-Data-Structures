@@ -13,7 +13,7 @@ class Stack:
         self.stack = []
 
     def push(self, data):
-        if len(self.stack) > 10:
+        if len(self.stack) >= 10:
             print("!!! Stack Overflow !!!\n")
             return
         self.top += 1
