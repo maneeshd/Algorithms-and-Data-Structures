@@ -5,28 +5,32 @@
 
 Recursive Binary Search: O(nlog n)
 """
+from timeit import default_timer
 
 
-def bin_search(data, left, right, key):
+def binary_search(data, left, right, key):
     if right >= left:
         mid = (left + right) // 2
         if data[mid] == key:
             return mid
         elif key < data[mid]:
-            return bin_search(data, left, mid-1, key)
+            return binary_search(data, left, mid - 1, key)
         else:
-            return bin_search(data, mid+1, right, key)
+            return binary_search(data, mid + 1, right, key)
     return -1
 
 
 def main():
     search_key = int(input("Enter the num ber to search: "))
-    data = [i for i in range(0, 1000000)]
-    index = bin_search(data, 0, len(data)-1, search_key)
+    data = list(range(1, 1000001))
+    start = default_timer()
+    index = binary_search(data, 0, len(data) - 1, search_key)
+    end = default_timer()
     if not index == -1:
         print("%d found at index: %d" % (search_key, index))
     else:
         print("!!! %d not found !!!")
+    print("Time taken to search: %f" % (end - start))
 
 
 if __name__ == '__main__':

@@ -19,14 +19,13 @@ def selection_sort(data):
 
 def main():
     start = default_timer()
-    data = [i for i in range(10000, 0, -1)]    # Worst Case Input(Reverse Sorted)
-    selection_sort(data)
-    print("Sort Time = %f Seconds" % (default_timer() - start))
+    selection_sort(arg)
+    print("Sorting Time: %f Seconds" % (default_timer() - start))
 
 
 if __name__ == '__main__':
     print("Selection Sort")
     print("-" * len("Selection Sort"))
-    main()
+    arg = list(range(10000, 0, -1))  # Worst Case Input(Reverse Sorted)
     t = Timer(main)
     print("\nAverage sorting time for 10000 elements in 10 runs = %f Seconds" % (t.timeit(10)/10))

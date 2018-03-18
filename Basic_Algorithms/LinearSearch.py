@@ -8,7 +8,7 @@ Linear Search -> O(n)
 from timeit import default_timer, Timer
 
 
-def l_search(data, key):
+def linear_search(data, key):
     for index, value in enumerate(data):
         if value == key:
             print("%d found at index=%d" % (key, index), end="  ->  ")
@@ -18,12 +18,12 @@ def l_search(data, key):
 
 def main():
     start = default_timer()
-    data = range(0, 1000000)
-    l_search(data, 999999)
-    print("Search Time = %f Seconds" % (default_timer() - start))
+    linear_search(arg, 1000000)
+    print("Search Time: %f Seconds" % (default_timer() - start))
 
 
 if __name__ == '__main__':
     t = Timer(main)
+    arg = list(range(1, 1000001))
     avg_time = t.timeit(10) / 10
     print("\nAverage Searching Time = %f Seconds" % avg_time)

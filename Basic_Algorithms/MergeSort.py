@@ -42,13 +42,13 @@ def merge_sort(data):
 
 def main():
     start = default_timer()
-    data = [i for i in range(100000, 0, -1)]    # Worst Case Input (Reverse Sorted)
-    merge_sort(data)
-    print("Sort Time = %f Seconds" % (default_timer() - start))
+    merge_sort(arg)
+    print("Sorting Time: %f Seconds" % (default_timer() - start))
 
 
 if __name__ == '__main__':
     print("Merge Sort")
     print("-" * len("Merge Sort"))
+    arg = list(range(100000, 0, -1))   # Worst Case Input (Reverse Sorted)
     t = Timer(main)
     print("\nAverage sorting time for 100000 elements in 10 runs = %f Seconds" % (t.timeit(10) / 10))

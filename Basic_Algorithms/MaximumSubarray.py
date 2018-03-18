@@ -50,8 +50,7 @@ def max_sub_array(data):
 
 
 def main():
-    data = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-    low, high, total = max_sub_array(data)
+    low, high, total = max_sub_array(arg)
     print(
         "The maximun sum contiguous subarray of array is:\n"
         "Start   => %d\n"
@@ -63,5 +62,6 @@ if __name__ == '__main__':
     print("The Maximum Sub-Array Problem")
     print("-" * len("The Maximum Sub-Array Problem"))
     start = default_timer()
+    arg = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
     main()
-    print("\nExecution Time = %f Seconds" % (default_timer() - start), end="")
+    print("\nExecution Time = %f Seconds" % (default_timer() - start))

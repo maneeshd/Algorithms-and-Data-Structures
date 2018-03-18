@@ -5,9 +5,10 @@
 
 Iterative Binary Search: O(nlog n)
 """
+from timeit import default_timer
 
 
-def bin_search(data, left, right, key):
+def iterative_binary_search(data, left, right, key):
     while right >= left:
         mid = (left + right) // 2
         if data[mid] == key:
@@ -20,13 +21,16 @@ def bin_search(data, left, right, key):
 
 
 def main():
-    search_key = int(input("Enter the num ber to search: "))
-    data = [i for i in range(0, 1000000)]
-    index = bin_search(data, 0, len(data)-1, search_key)
+    search_key = int(input("Enter the number to search: "))
+    data = list(range(1, 1000001))
+    start = default_timer()
+    index = iterative_binary_search(data, 0, len(data) - 1, search_key)
+    end = default_timer()
     if not index == -1:
         print("%d found at index: %d" % (search_key, index))
     else:
-        print("!!! %d not found !!!")
+        print("!!! %d not found !!!" % search_key)
+    print("Time taken to search: %f Seconds" % (end - start))
 
 
 if __name__ == '__main__':

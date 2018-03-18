@@ -20,13 +20,13 @@ def insertion_sort(data):
 
 def main():
     start = default_timer()
-    data = [i for i in range(10000, 0, -1)]    # Worst Case Input(Reverse Sorted)
-    insertion_sort(data)
+    insertion_sort(arg)
     print("Sort Time = %f Seconds" % (default_timer() - start))
 
 
 if __name__ == '__main__':
     print("Insertion Sort")
     print("-" * len("Insertion Sort"))
+    arg = list(range(10000, 0, -1))  # Worst Case Input(Reverse Sorted)
     t = Timer(main)
     print("\nAverage sorting time for 10000 elements in 10 runs = %f Seconds" % (t.timeit(10)/10))
