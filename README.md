@@ -1,2 +1,2 @@
 # Algorithms-and-Data-Structures
-Algorithms and Data Structures implementation in Python
+Algorithms and Data Structures practice and implementation in Python
