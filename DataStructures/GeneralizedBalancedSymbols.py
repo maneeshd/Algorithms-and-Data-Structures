@@ -12,12 +12,14 @@ def is_balanced(expression):
     while index < len(expression):
         symbol = expression[index]
         if symbol in "([{":
-            exp_stack.push(symbol)
+            if exp_stack.push(symbol) is not False:
+                print(symbol, "pushed into stack...")
         elif symbol in ")]}":
             popped_symbol = exp_stack.pop()
-            print(popped_symbol, "popped...")
-            if not matches(popped_symbol, symbol):
-                balanced = False
+            if popped_symbol is not False:
+                print(popped_symbol, "popped...")
+                if not matches(popped_symbol, symbol):
+                    balanced = False
         index += 1
     print("Expression Symbol Stack:")
     print(exp_stack)

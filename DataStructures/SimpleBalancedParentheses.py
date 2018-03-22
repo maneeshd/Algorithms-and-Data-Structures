@@ -11,10 +11,11 @@ def is_balanced(expression):
     while index < len(expression):
         symbol = expression[index]
         if symbol == "(":
-            exp_stack.push(symbol)
+            if exp_stack.push(symbol) is not False:
+                print("( pushed into stack")
         elif symbol == ")":
-            exp_stack.pop()
-            print(") popped...")
+            if exp_stack.pop() is not False:
+                print(") popped...")
         index += 1
     print("Expression Symbol Stack:")
     print(exp_stack)
