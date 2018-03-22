@@ -14,6 +14,8 @@ class Stack:
         self.__STACK_SIZE_LIMIT = stack_size_limit
 
     def __str__(self):
+        if self.is_empty():
+            return "STACK IS EMPTY"
         ret_str = "\t[\n"
         for ele in self.stack[::-1]:
             ret_str += "\t  {}\n".format(ele)
