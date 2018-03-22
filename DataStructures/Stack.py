@@ -52,16 +52,15 @@ class Stack:
 
     def push(self, item: str):
         if self.is_full():
-            print("!!! Stack Overflow !!!\n")
+            print("\n!!! Stack Overflow !!!\n")
             return False
         self.top += 1
         self.stack.insert(self.top, Stack.type_checker(item))
-        print(item, "pushed into stack...")
         return True
 
     def pop(self):
         if self.is_empty():
-            print("!!! Stack Underflow !!!\n")
+            print("\n!!! Stack Underflow !!!\n")
             return False
         data = self.stack.pop(self.top)
         self.top -= 1
@@ -69,8 +68,8 @@ class Stack:
 
     def peek(self):
         if self.is_empty():
-            print("!!! Stack Underflow !!!")
-            return
+            print("\n!!! Stack Underflow !!!\n")
+            return False
         return self.stack[self.top]
 
 
@@ -92,8 +91,8 @@ if __name__ == '__main__':
 
             if choice == "1":
                 dat = input("Enter the item to push: ")
-                my_stack.push(dat)
-                print()
+                if my_stack.push(dat):
+                    print(dat, "pushed into stack...\n")
 
             elif choice == "2":
                 dat = my_stack.pop()
