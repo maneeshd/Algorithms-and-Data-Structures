@@ -6,6 +6,11 @@ Stack = __import__("Stack").Stack
 
 
 def integer_to_binary_converter(integer: int):
+    if integer == 0 or integer == 1:
+        return str(integer)
+    elif integer < 0:
+        return "! Only supports positive integers !"
+
     rem_stack = Stack(100)
     while integer > 0:
         rem = integer % 2
