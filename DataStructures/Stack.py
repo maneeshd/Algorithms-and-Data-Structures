@@ -91,19 +91,19 @@ if __name__ == '__main__':
 
             if choice == "1":
                 dat = input("Enter the item to push: ")
-                if my_stack.push(dat):
+                if my_stack.push(dat) is not False:
                     print(dat, "pushed into stack...\n")
 
             elif choice == "2":
                 dat = my_stack.pop()
-                if dat:
+                if dat is not False:
                     print("Popped item:", dat, "\n")
                 else:
                     print()
 
             elif choice == "3":
                 peek_item = my_stack.peek()
-                if peek_item:
+                if peek_item is not False:
                     print("Top most item in stack:", peek_item, "\n")
                 else:
                     print()
