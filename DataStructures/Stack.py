@@ -3,7 +3,7 @@
 @email: maneeshd77@gmail.com
 @date: 24/6/17
 
-Stack
+Implementation of a somewhat generalized Stack
 """
 
 
@@ -48,7 +48,7 @@ class Stack:
         except:
             return data
 
-    def push(self, item):
+    def push(self, item: str):
         if self.is_full():
             print("!!! Stack Overflow !!!\n")
             return False
