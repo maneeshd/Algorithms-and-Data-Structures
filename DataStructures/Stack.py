@@ -14,13 +14,10 @@ class Stack:
         self.__STACK_SIZE_LIMIT = stack_size_limit
 
     def __str__(self):
-        if self.is_empty():
-            return str([])
-        i = len(self.stack) - 1
-        ret_str = ""
-        while i > -1:
-            ret_str += "\t{}\n".format(self.stack[i])
-            i -= 1
+        ret_str = "\t[\n"
+        for ele in self.stack[::-1]:
+            ret_str += "\t\t{}\n".format(ele)
+        ret_str += "\t]\n"
         return ret_str
 
     def is_empty(self):
@@ -54,16 +51,17 @@ class Stack:
     def push(self, item):
         if self.is_full():
             print("!!! Stack Overflow !!!\n")
-            return
-        self.stack.append(Stack.type_checker(item))
+            return False
         self.top += 1
+        self.stack.insert(self.top, Stack.type_checker(item))
         print(item, "pushed into stack...")
+        return True
 
     def pop(self):
         if self.is_empty():
             print("!!! Stack Underflow !!!\n")
-            return
-        data = self.stack[self.top]
+            return False
+        data = self.stack.pop(self.top)
         self.top -= 1
         return data
 
