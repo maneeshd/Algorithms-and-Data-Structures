@@ -2,7 +2,7 @@
 Created on: 16-Mar-2018
 Created by: Maneesh D
 """
-from Data_Structures.LogicGate import AndGate, OrGate, NotGate, Connector
+from DataStructures.LogicGate import AndGate, OrGate, NotGate, Connector
 
 
 if __name__ == '__main__':
