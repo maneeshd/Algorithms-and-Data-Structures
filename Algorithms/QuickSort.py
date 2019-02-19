@@ -29,7 +29,7 @@ def partition(arr: list, left: int, right: int) -> int:
             arr[i], arr[j] = arr[j], arr[i]
 
     # One final swap to put pivot element at its correct position
-    arr[i + 1], arr[pivot] = arr[pivot], arr[i + 1]
+    arr[i + 1], arr[right] = arr[right], arr[i + 1]
 
     # Return the partition index
     return i + 1

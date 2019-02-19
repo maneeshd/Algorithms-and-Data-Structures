@@ -30,7 +30,7 @@ i.e. g and f in str 2.
 from collections import Counter
 
 
-def is_k_anagram(s1: str, s2: str, k: int) -> bool:
+def is_k_anagram(s1: str, s2: str, k: int) -> tuple:
     if len(s1) != len(s2):
         return False, None, None
 

@@ -6,12 +6,16 @@
 Worst Case Analysis: Selection Sort -> O(n^2)
 """
 from timeit import Timer, default_timer
+from random import shuffle
+
+
+ARR = list()
 
 
 def selection_sort(data):
     for i in range(len(data)):
         min_pos = i
-        for j in range(i+1, len(data)):
+        for j in range(i + 1, len(data)):
             if data[j] < data[min_pos]:
                 min_pos = j
         data[i], data[min_pos] = data[min_pos], data[i]
@@ -19,13 +23,16 @@ def selection_sort(data):
 
 def main():
     start = default_timer()
-    selection_sort(arg)
-    print("Sorting Time: %f Seconds" % (default_timer() - start))
+    shuffle(ARR)
+    print("Input Array:", ARR)
+    selection_sort(ARR)
+    print("Sorted Array:", ARR)
+    print("Sorting Time: %f Seconds\n" % (default_timer() - start))
 
 
 if __name__ == '__main__':
     print("Selection Sort")
     print("-" * len("Selection Sort"))
-    arg = list(range(10000, 0, -1))  # Worst Case Input(Reverse Sorted)
+    ARR = list(range(25, 0, -1))  # Worst Case Input(Reverse Sorted)
     t = Timer(main)
-    print("\nAverage sorting time for 10000 elements in 10 runs = %f Seconds" % (t.timeit(10)/10))
+    print("\nAverage sorting time for 25 elements in 3 runs = %f Seconds" % (t.timeit(3) / 3))
