@@ -46,7 +46,7 @@ def is_k_anagram(s1: str, s2: str, k: int) -> bool:
 
         if changes > k:
             return False, None, None
-        diff = [c for c in counter_map if counter_map[c] > 0]
+    diff = [c for c in counter_map if counter_map[c] > 0]
     return True, extra, diff
 
 
