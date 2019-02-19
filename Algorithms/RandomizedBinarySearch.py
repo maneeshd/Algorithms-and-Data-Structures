@@ -2,31 +2,39 @@
 Author: Maneesh Divana <mdaneeshd77@gmail.com>
 Interpreter: Python 3.6.8
 
-Binary Search :: O(log n)
+Randomized Binary Search :: O(log n)
 """
+from random import randint
 
 
-def bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
+def get_pivot(num1: int, num2: int) -> int:
     """
-    Recursive Binary Search
+    Get a radom pivot between num1 and num2
+    """
+    return (num1 + randint(0, 1000000) % (num2 - num1 + 1))
+
+
+def rand_bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
+    """
+    Recursive Randominzed Binary Search
     """
     if right >= left:
-        mid = (left + right) // 2
+        mid = get_pivot(left, right)
         if arr[mid] == key:
             return mid
         if arr[mid] > key:
-            return bin_search_recur(arr, left, mid - 1, key)
+            return rand_bin_search_recur(arr, left, mid - 1, key)
         else:
-            return bin_search_recur(arr, mid + 1, right, key)
+            return rand_bin_search_recur(arr, mid + 1, right, key)
     return -1
 
 
-def bin_search_iter(arr: list, left: int, right: int, key: int) -> int:
+def rand_bin_search_iter(arr: list, left: int, right: int, key: int) -> int:
     """
-    Iterative Binary Search
+    Iterative Randominzed Binary Search
     """
     while left <= right:
-        mid = (left + right) // 2
+        mid = get_pivot(left, right)
         if arr[mid] == key:
             return mid
         elif arr[mid] < key:
@@ -42,14 +50,14 @@ if __name__ == "__main__":
     KEY = 43
 
     # Using Recursion
-    sidx = bin_search_recur(ARR, 0, N - 1, KEY)
+    sidx = rand_bin_search_recur(ARR, 0, N - 1, KEY)
     if sidx == -1:
         print(KEY, "was not found!")
     else:
         print(KEY, "was found at index", sidx)
 
     # Using Iteration
-    sidx = bin_search_iter(ARR, 0, N - 1, KEY)
+    sidx = rand_bin_search_iter(ARR, 0, N - 1, KEY)
     if sidx == -1:
         print(KEY, "was not found!")
     else:
