@@ -32,7 +32,7 @@ from collections import Counter
 
 def is_k_anagram(s1: str, s2: str, k: int) -> bool:
     if len(s1) != len(s2):
-        return False
+        return False, None, None
 
     counter_map = Counter(s1)
     extra = list()
