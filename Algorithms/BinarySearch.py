@@ -7,9 +7,7 @@ Binary Search :: O(log n)
 
 
 def bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
-    """
-    Recursive Binary Search
-    """
+    """Recursive Binary Search"""
     if right >= left:
         mid = (left + right) // 2
         if arr[mid] == key:
@@ -22,9 +20,7 @@ def bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
 
 
 def bin_search_iter(arr: list, left: int, right: int, key: int) -> int:
-    """
-    Iterative Binary Search
-    """
+    """Iterative Binary Search"""
     while left <= right:
         mid = (left + right) // 2
         if arr[mid] == key:

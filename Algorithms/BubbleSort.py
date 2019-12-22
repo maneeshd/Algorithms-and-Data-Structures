@@ -9,6 +9,7 @@ from timeit import Timer, default_timer
 
 
 def bubble_sort(data):
+    """Bubble Sort implementation"""
     n = len(data)
     for i in range(n):
         swapped = False
@@ -22,6 +23,7 @@ def bubble_sort(data):
 
 
 def main():
+    """Main Driver Function"""
     start = default_timer()
     bubble_sort(arg)
     print("Sort Time = %f Seconds" % (default_timer() - start))

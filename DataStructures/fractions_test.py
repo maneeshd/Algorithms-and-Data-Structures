@@ -2,7 +2,7 @@
 Created on: 15-Mar-2018
 Created by: Maneesh D
 """
-from DataStructures.Fraction import Fraction
+from Fraction import Fraction
 
 
 f1 = Fraction(-2, 3)

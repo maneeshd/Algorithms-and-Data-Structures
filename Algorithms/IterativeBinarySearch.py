@@ -8,7 +8,8 @@ Iterative Binary Search: O(nlog n)
 from timeit import default_timer
 
 
-def iterative_binary_search(data, left, right, key):
+def iterative_binary_search(data: list, left: int, right: int, key: str) -> int:
+    """Iterative Binary Search Implementation"""
     while right >= left:
         mid = (left + right) // 2
         if data[mid] == key:
@@ -21,6 +22,7 @@ def iterative_binary_search(data, left, right, key):
 
 
 def main():
+    """Main Driver Function"""
     search_key = int(input("Enter the number to search: "))
     data = list(range(1, 1000001))
     start = default_timer()
@@ -33,7 +35,7 @@ def main():
     print("Time taken to search: %f Seconds" % (end - start))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Iterative Binary Search")
     print("-" * len("Iterative Binary Search"))
     main()

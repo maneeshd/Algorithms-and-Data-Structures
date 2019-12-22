@@ -1,4 +1,9 @@
-from __future__ import print_function
+"""
+Author: Maneesh D <maneeshd77@gmail.com>
+
+Single-Ended-Queue
+"""
+from __future__ import absolute_import
 from sys import getsizeof
 from random import randint
 
@@ -7,6 +12,7 @@ class Queue:
     """
     Queue
     """
+
     def __init__(self, max_size=1000000):
         """
         Creates an empty single-ended Queue

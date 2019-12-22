@@ -10,6 +10,7 @@ For n disks, a total of (2^n) - 1 moves are required.
 
 
 def toh(n: int, src: str, dst: str, aux: str) -> None:
+    """Recursive Tower of Hanoi Solution"""
     if n == 1:
         print("Move disk", n, "from rod", src, "to rod", dst)
         return
@@ -25,7 +26,7 @@ def toh(n: int, src: str, dst: str, aux: str) -> None:
 
 
 if __name__ == "__main__":
-    N = 4   # Number of disks
+    N = 4  # Number of disks
     SOURCE = "A"
     AUXILIARY = "B"
     DESTINATION = "C"

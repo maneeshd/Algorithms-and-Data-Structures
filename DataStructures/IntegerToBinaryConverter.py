@@ -2,10 +2,12 @@
 Created on: 22-Mar-2018
 Created by: Maneesh D
 """
-Stack = __import__("Stack").Stack
+from __future__ import absolute_import
+from Stack import Stack
 
 
-def integer_to_binary_converter(integer: int):
+def integer_to_binary_converter(integer: int) -> str:
+    """Converts an integer into its binary form"""
     if integer == 0 or integer == 1:
         return str(integer)
     elif integer < 0:
@@ -28,7 +30,7 @@ def integer_to_binary_converter(integer: int):
     return binary_string
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app_title = "integer to binary converter"
     print()
     print(app_title.title())

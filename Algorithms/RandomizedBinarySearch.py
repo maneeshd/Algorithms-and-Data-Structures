@@ -8,16 +8,12 @@ from random import randint
 
 
 def get_pivot(num1: int, num2: int) -> int:
-    """
-    Get a radom pivot between num1 and num2
-    """
-    return (num1 + randint(0, 1000000) % (num2 - num1 + 1))
+    """Get a radom pivot between num1 and num2"""
+    return num1 + randint(0, 1000000) % (num2 - num1 + 1)
 
 
 def rand_bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
-    """
-    Recursive Randominzed Binary Search
-    """
+    """Recursive Randominzed Binary Search"""
     if right >= left:
         mid = get_pivot(left, right)
         if arr[mid] == key:
@@ -30,9 +26,7 @@ def rand_bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
 
 
 def rand_bin_search_iter(arr: list, left: int, right: int, key: int) -> int:
-    """
-    Iterative Randominzed Binary Search
-    """
+    """Iterative Randominzed Binary Search"""
     while left <= right:
         mid = get_pivot(left, right)
         if arr[mid] == key:

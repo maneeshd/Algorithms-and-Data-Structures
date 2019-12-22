@@ -11,6 +11,7 @@ from random import shuffle
 
 
 def msort(arr: list) -> None:
+    """Recursive MergeSort implementation"""
     if len(arr) > 1:
         # Find the mid-point of the array
         mid = len(arr) // 2

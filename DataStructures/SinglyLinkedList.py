@@ -11,6 +11,7 @@ class Node:
     """
     Node in a Singly-Linked-List.
     """
+
     def __init__(self, data, next=None):
         """
         Create a Node
@@ -83,6 +84,7 @@ class SinglyLinkedList:
     """
     Singly-Linked-List
     """
+
     def __init__(self, head=None):
         """
         Create a Singly-Linked-List
@@ -400,14 +402,20 @@ if __name__ == "__main__":
     print("\nNumber of nodes in the linked list:", len(linked_list))
 
     # Size of the linked list
-    print("\nMemory footprint of the linked list:", linked_list.get_memory_footprint(), "Bytes")
+    print(
+        "\nMemory footprint of the linked list:",
+        linked_list.get_memory_footprint(),
+        "Bytes",
+    )
 
     # Search the linked list
     print("\nSearching for data=1 in the linked list...")
     print(linked_list.search(1))
 
     # Search the linked list
-    print("\nSearching for data=1 in the linked list using getitem i.e. linked_list[1]...")
+    print(
+        "\nSearching for data=1 in the linked list using getitem i.e. linked_list[1]..."
+    )
     print(linked_list[1])
 
     # Reverse the linked list

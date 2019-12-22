@@ -31,6 +31,7 @@ from collections import Counter
 
 
 def is_k_anagram(s1: str, s2: str, k: int) -> tuple:
+    """Check if two strings are k-anagrams or not"""
     if len(s1) != len(s2):
         return False, None, None
 
@@ -55,14 +56,16 @@ if __name__ == "__main__":
     STR2 = "grammar"
     K = 3
     RET_VAL, EXTRA, DIFF = is_k_anagram(STR1, STR2, K)
-    print("1.",
-          STR1,
-          "and",
-          STR2,
-          "can become anagrams with a maximum of",
-          K,
-          "changes? =>",
-          "Yes" if RET_VAL else "No")
+    print(
+        "1.",
+        STR1,
+        "and",
+        STR2,
+        "can become anagrams with a maximum of",
+        K,
+        "changes? =>",
+        "Yes" if RET_VAL else "No",
+    )
     if RET_VAL:
         print("Number of changes required:", len(DIFF))
         print("It can be done by making the below changes in:", STR2)
@@ -75,14 +78,16 @@ if __name__ == "__main__":
     STR2 = "elekshb"
     K = 3
     RET_VAL, EXTRA, DIFF = is_k_anagram(STR1, STR2, K)
-    print("2.",
-          STR1,
-          "and",
-          STR2,
-          "can become anagrams with a maximum of",
-          K,
-          "changes? =>",
-          "Yes" if RET_VAL else "No")
+    print(
+        "2.",
+        STR1,
+        "and",
+        STR2,
+        "can become anagrams with a maximum of",
+        K,
+        "changes? =>",
+        "Yes" if RET_VAL else "No",
+    )
     if RET_VAL:
         print("Number of changes required:", len(DIFF))
         print("It can be done by making the below changes in:", STR2)
@@ -95,14 +100,16 @@ if __name__ == "__main__":
     STR2 = "lkbzam"
     K = 2
     RET_VAL, EXTRA, DIFF = is_k_anagram(STR1, STR2, K)
-    print("3.",
-          STR1,
-          "and",
-          STR2,
-          "can become anagrams with a maximum of",
-          K,
-          "changes? =>",
-          "Yes" if RET_VAL else "No")
+    print(
+        "3.",
+        STR1,
+        "and",
+        STR2,
+        "can become anagrams with a maximum of",
+        K,
+        "changes? =>",
+        "Yes" if RET_VAL else "No",
+    )
     if RET_VAL:
         print("Number of changes required:", len(DIFF))
         print("It can be done by making the below changes in:", STR2)

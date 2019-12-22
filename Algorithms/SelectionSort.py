@@ -13,6 +13,7 @@ ARR = list()
 
 
 def selection_sort(data):
+    """Selection sort implementation"""
     for i in range(len(data)):
         min_pos = i
         for j in range(i + 1, len(data)):
@@ -22,6 +23,7 @@ def selection_sort(data):
 
 
 def main():
+    """Main Driver Function"""
     start = default_timer()
     shuffle(ARR)
     print("Input Array:", ARR)
@@ -30,9 +32,12 @@ def main():
     print("Sorting Time: %f Seconds\n" % (default_timer() - start))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Selection Sort")
     print("-" * len("Selection Sort"))
     ARR = list(range(25, 0, -1))  # Worst Case Input(Reverse Sorted)
     t = Timer(main)
-    print("\nAverage sorting time for 25 elements in 3 runs = %f Seconds" % (t.timeit(3) / 3))
+    print(
+        "\nAverage sorting time for 25 elements in 3 runs = %f Seconds"
+        % (t.timeit(3) / 3)
+    )

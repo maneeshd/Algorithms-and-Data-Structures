@@ -2,10 +2,12 @@
 Created on: 22-Mar-2018
 Created by: Maneesh D
 """
-Stack = __import__("Stack").Stack
+from __future__ import absolute_import
+from Stack import Stack
 
 
-def is_balanced(expression):
+def is_balanced(expression: str) -> bool:
+    """Checks if the given expression is balanced or not"""
     exp_stack = Stack(100)
     index = 0
     while index < len(expression):
@@ -24,7 +26,7 @@ def is_balanced(expression):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # balanced_input: (3 * (1 + 3)) + ((5 * 7) + (9 / 2))
     # unbalanced_input: ((5 + 2) * ((10 + 4) * (55 + 5))
     print("\nSimple Balanced Parentheses Checker")

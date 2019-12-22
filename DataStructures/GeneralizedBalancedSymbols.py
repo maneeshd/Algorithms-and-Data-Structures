@@ -2,10 +2,12 @@
 Created on: 22-Mar-2018
 Created by: Maneesh D
 """
-Stack = __import__("Stack").Stack
+from __future__ import absolute_import
+from Stack import Stack
 
 
-def is_balanced(expression):
+def is_balanced(expression: str) -> bool:
+    """Checks if a given expression is balanced or not"""
     exp_stack = Stack(100)
     index = 0
     balanced = True
@@ -28,14 +30,13 @@ def is_balanced(expression):
     return False
 
 
-def matches(open_symbol, close_symbol):
-    symbol_close_map = {"(": ")",
-                        "[": "]",
-                        "{": "}"}
+def matches(open_symbol: str, close_symbol: str) -> bool:
+    """Checks if the opening and closing sybols match"""
+    symbol_close_map = {"(": ")", "[": "]", "{": "}"}
     return close_symbol == symbol_close_map.get(open_symbol)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     title = "Generalized Balanced Symbols Checker"
     print()
     print(title)

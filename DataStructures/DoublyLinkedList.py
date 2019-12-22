@@ -3,7 +3,7 @@ Author: Maneesh D <maneeshd77@gmail.com>
 
 Doubly-Linked-List
 """
-from __future__ import print_function
+from __future__ import absolute_import
 from sys import getsizeof
 
 
@@ -11,6 +11,7 @@ class Node:
     """
     Node in a Doubly-Linked-List
     """
+
     def __init__(self, data, left=None, right=None):
         """
         Create a Node
@@ -84,6 +85,7 @@ class DoublyLinkedList:
     """
     Doubly-Linked-List
     """
+
     def __init__(self, head=None, tail=None):
         """
         Create a Doubly-Linked-List

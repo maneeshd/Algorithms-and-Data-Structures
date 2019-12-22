@@ -13,6 +13,8 @@ from random import shuffle
 
 
 def naive_inv_count(arr: list) -> int:
+    """Given an unsorted array, finds the number of
+    inversions/swaps required to get a sorted array - Naive Method"""
     inv_count = 0
     n = len(arr)
     for i in range(n):
@@ -23,6 +25,8 @@ def naive_inv_count(arr: list) -> int:
 
 
 def msort_inv_count(arr: list) -> int:
+    """Given an unsorted array, finds the number of
+    inversions/swaps required to get a sorted array - MergeSort Method"""
     inv_count = mid = 0
     if len(arr) > 1:
         # Find the mid-point of the array

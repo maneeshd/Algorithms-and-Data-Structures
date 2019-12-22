@@ -25,6 +25,7 @@ Output :  3
 
 
 def find_count(str_: str) -> tuple:
+    """Finds the counts of characters at the same position as in English alphabet"""
     count = 0
     ord_l = ord("a")
     ord_u = ord("A")

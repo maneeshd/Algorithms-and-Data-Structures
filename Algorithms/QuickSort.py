@@ -11,10 +11,8 @@ from random import shuffle
 
 
 def partition(arr: list, left: int, right: int) -> int:
-    """
-    Partitions the given array based on a pivot element,
-    then sorts the sub-arrays and returns the partition index
-    """
+    """Partitions the given array based on a pivot element,
+    then sorts the sub-arrays and returns the partition index"""
     # Take the right most element as pivot
     pivot = arr[right]
 
@@ -36,10 +34,8 @@ def partition(arr: list, left: int, right: int) -> int:
 
 
 def qsort(arr: list, left: int, right: int) -> None:
-    """
-    Recursively partitions the given array and sorts based on
-    QuickSort algorithm.
-    """
+    """Recursively partitions the given array and sorts based on
+    QuickSort algorithm."""
     if left < right:
         # Partition the array and get the partition index
         p_idx = partition(arr, left, right)

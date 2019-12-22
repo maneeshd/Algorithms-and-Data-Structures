@@ -28,7 +28,10 @@ class Stack:
         return False
 
     def is_full(self):
-        if self.top >= self.__STACK_SIZE_LIMIT or len(self.stack) >= self.__STACK_SIZE_LIMIT:
+        if (
+            self.top >= self.__STACK_SIZE_LIMIT
+            or len(self.stack) >= self.__STACK_SIZE_LIMIT
+        ):
             return True
         return False
 
@@ -47,7 +50,7 @@ class Stack:
                 return float(data)
             else:
                 return data
-        except:
+        except Exception:
             return data
 
     def push(self, item: str):
@@ -73,7 +76,7 @@ class Stack:
         return self.stack[self.top]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("Stack Operations")
     print("-" * len("Stack Operations"))
     my_stack = Stack()
@@ -81,11 +84,7 @@ if __name__ == '__main__':
     while True:
         try:
 
-            print("[1] Push\n"
-                  "[2] Pop\n"
-                  "[3] Peek\n"
-                  "[4] Display\n"
-                  "[5] Exit\n")
+            print("[1] Push\n" "[2] Pop\n" "[3] Peek\n" "[4] Display\n" "[5] Exit\n")
 
             choice = input("Enter your choice: ")
 
