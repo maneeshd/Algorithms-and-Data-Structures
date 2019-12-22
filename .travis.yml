@@ -4,4 +4,4 @@ python:
 install:
   - "pip install pylint pytest"
 script:
-  - "pytest test.py"
+  - "pytest -s test.py"
