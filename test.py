@@ -15,7 +15,7 @@ def test_pylint():
     if match:
         score = float(match.group(1))
         print(f"Score={score}")
-        assert score > 8.2
+        assert score > 8.5
     else:
         print(stdout.read())
         print(stderr.read())
