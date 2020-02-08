@@ -7,17 +7,17 @@ Reverse a string without using library functions and extra variable to swap.
 
 
 def reverse_str(s: str) -> str:
-    """REverse a given string"""
+    """Reverse a given string"""
     # Python strings are immutable
     s = list(s)
-    slen = len(s)
+    s_len = len(s)
     # Using the extra idx as a temp space in list
     s.append(None)
-    for idx in range(slen // 2):
-        s[slen] = s[idx]
-        s[idx] = s[slen - idx - 1]
-        s[slen - idx - 1] = s[slen]
-    return "".join(s)[:slen]
+    for idx in range(s_len // 2):
+        s[s_len] = s[idx]
+        s[idx] = s[s_len - idx - 1]
+        s[s_len - idx - 1] = s[s_len]
+    return "".join(s)[:s_len]
 
 
 if __name__ == "__main__":

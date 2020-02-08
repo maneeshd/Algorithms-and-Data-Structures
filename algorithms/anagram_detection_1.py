@@ -10,7 +10,10 @@ Given two strings, find if they are anagrams of each other.
 
 
 def is_anagram(str1: str, str2: str) -> bool:
-    """Check if the given two strings are anagrams"""
+    """Check if the given two strings are anagrams
+    Worst: O(nlog n)
+    Best: O(n)
+    """
     str1_list = sorted(str1)
     str2_list = sorted(str2)
     return str1_list == str2_list

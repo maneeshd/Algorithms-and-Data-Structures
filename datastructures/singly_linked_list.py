@@ -5,6 +5,7 @@ Implementation of Singly-Linked-List
 """
 from __future__ import print_function
 from sys import getsizeof
+from typing import Any, Tuple
 
 
 class Node:
@@ -85,14 +86,27 @@ class SinglyLinkedList:
     Singly-Linked-List
     """
 
-    def __init__(self, head=None):
+    def __init__(self, head: Node = None) -> None:
         """
         Create a Singly-Linked-List
         O(1)
         """
         self.head = head
 
-    def __str__(self):
+    def is_circular(self) -> bool:
+        """Checks if the linked list has a cycle
+        O(n)
+        """
+        slow = self.head
+        fast = self.head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast:
+                return True
+        return False
+
+    def __str__(self) -> str:
         """
         String representation of linked list.
         O(n)
@@ -100,21 +114,28 @@ class SinglyLinkedList:
         nodes = list()
         if self.head:
             cur_node = self.head
+            fast = self.head
             while cur_node:
                 nodes.append(str(cur_node))
                 cur_node = cur_node.next
+                if fast and fast.next:
+                    fast = fast.next.next
+                    if cur_node is fast:
+                        print("[CRITICAL] ! Cycle detected in the linked list. Stopping iteration. !")
+                        nodes.append(str(cur_node))
+                        break
             return "HEAD -> {0}".format(" -> ".join(nodes))
         else:
             return "HEAD -> None"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Printable representation of the Node object.
         O(1)
         """
         return "%s(%r)" % (self.__class__, self.head)
 
-    def __len__(self):
+    def __len__(self) -> int:
         """
         Number of nodes in the linked list
         O(n)
@@ -126,7 +147,7 @@ class SinglyLinkedList:
             cur_node = cur_node.next
         return num_of_nodes
 
-    def __sizeof__(self):
+    def __sizeof__(self) -> float:
         """
         Total size of the linked list
         O(n)
@@ -138,7 +159,7 @@ class SinglyLinkedList:
             cur_node = cur_node.next
         return size
 
-    def prepend(self, data):
+    def prepend(self, data: Any) -> None:
         """
         Insert data at the begining of the linked list.
         O(1)
@@ -155,7 +176,7 @@ class SinglyLinkedList:
             else:
                 self.head = Node(data, next=self.head)
 
-    def append(self, data):
+    def append(self, data: Any) -> None:
         """
         Insert data at the end of the linked list.
         O(n)
@@ -174,7 +195,7 @@ class SinglyLinkedList:
             else:
                 cur_node.next = Node(data)
 
-    def insert_before(self, node, data):
+    def insert_before(self, node: Node, data: Any) -> None:
         """
         Insert data before the given node
         O(n)
@@ -210,7 +231,7 @@ class SinglyLinkedList:
             else:
                 print("! Did not find the node to insert !")
 
-    def insert_after(self, node, data):
+    def insert_after(self, node: Node, data: Any) -> None:
         """
         Insert data after the given node
         O(n)
@@ -244,7 +265,7 @@ class SinglyLinkedList:
             else:
                 print("! Did not find the node to insert !")
 
-    def __getitem__(self, search_key):
+    def __getitem__(self, search_key: Any) -> Node:
         """
         Search for the first occurance of a node with `data` matching `search_key`.
         Returns the `Node` if found else returns `None`
@@ -261,13 +282,13 @@ class SinglyLinkedList:
         # cur will be None if it hits the end of list or list is empty
         return cur_node
 
-    def search(self, search_key):
+    def search(self, search_key: Any) -> Node:
         """
         Alias/Wrapper for __getitem__
         """
         return self.__getitem__(search_key)
 
-    def remove(self, search_key):
+    def remove(self, search_key: Any) -> str:
         """
         Remove for the first occurance of a node with `data` matching `search_key`.
         O(n)
@@ -292,7 +313,7 @@ class SinglyLinkedList:
         else:
             return "! Did not find the node to be removed !"
 
-    def reverse(self):
+    def reverse(self) -> None:
         """
         Reverse the linked list
         O(n)
@@ -307,14 +328,14 @@ class SinglyLinkedList:
             cur_node = next_node
         self.head = prev_node
 
-    def get_memory_footprint(self):
+    def get_memory_footprint(self) -> float:
         """
         Amount of memory used by the linked list in Bytes
         O(n) + O(1)
         """
         return self.__sizeof__() + getsizeof(self)
 
-    def __split_linked_list(self, head):
+    def __split_linked_list(self, head: Node) -> Tuple[Node, Node]:
         """
         Split the linked list using front-back splitting
         """
@@ -333,7 +354,7 @@ class SinglyLinkedList:
             right_half = slow.next
         return left_half, right_half
 
-    def __merge(self, left_half, right_half, reverse=False):
+    def __merge(self, left_half: Node, right_half: Node, reverse: bool = False) -> Node:
         """
         Merge the divided linked list
         """
@@ -359,7 +380,7 @@ class SinglyLinkedList:
         cur.next = left_half or right_half
         return head
 
-    def __merge_sort(self, head, desc=False):
+    def __merge_sort(self, head: Node, desc: bool = False) -> Node:
         """
         Sorts the linked list using MergeSort
         """
@@ -371,9 +392,9 @@ class SinglyLinkedList:
         new_head = self.__merge(left_half, right_half, desc)
         return new_head
 
-    def sort(self, desc=False):
+    def sort(self, desc: bool = False) -> Node:
         """
-        Sort the Linked List
+        Returns a sorted copy of the Linked List
         """
         self.head = self.__merge_sort(self.head, desc)
 
