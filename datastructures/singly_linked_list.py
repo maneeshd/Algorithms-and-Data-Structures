@@ -3,15 +3,20 @@ Author: Maneesh D <maneeshd77@gmail.com>
 
 Implementation of Singly-Linked-List
 """
-from __future__ import print_function
 from sys import getsizeof
-from typing import Any, Tuple
+from typing import Any, Tuple, TypeVar
+
+
+typeLinkedList = TypeVar("SinglyLinkedList")
+typeNode = TypeVar("Node")
 
 
 class Node:
     """
     Node in a Singly-Linked-List.
     """
+
+    __name__ = "Node"
 
     def __init__(self, data, next=None):
         """
@@ -30,7 +35,7 @@ class Node:
         """
         Printable representation of the Node object.
         """
-        return "%s(%r, %r)" % (self.__class__, self.data, self.next)
+        return "%s(%r, %r)" % (self.__name__, self.data, self.next)
 
     def __len__(self):
         """
@@ -86,12 +91,15 @@ class SinglyLinkedList:
     Singly-Linked-List
     """
 
+    __name__ = "SinglyLinkedList"
+
     def __init__(self, head: Node = None) -> None:
         """
         Create a Singly-Linked-List
         O(1)
         """
         self.head = head
+        self.__desc = False
 
     def is_circular(self) -> bool:
         """Checks if the linked list has a cycle
@@ -121,19 +129,21 @@ class SinglyLinkedList:
                 if fast and fast.next:
                     fast = fast.next.next
                     if cur_node is fast:
-                        print("[CRITICAL] ! Cycle detected in the linked list. Stopping iteration. !")
+                        print(
+                            "[CRITICAL] ! Cycle detected in the linked list. Stopping iteration. !"
+                        )
                         nodes.append(str(cur_node))
                         break
-            return "HEAD -> {0}".format(" -> ".join(nodes))
+            return "HEAD => {0}".format(" -> ".join(nodes))
         else:
-            return "HEAD -> None"
+            return "HEAD => None"
 
     def __repr__(self) -> str:
         """
-        Printable representation of the Node object.
+        Printable representation of the SinglyLinkedList object.
         O(1)
         """
-        return "%s(%r)" % (self.__class__, self.head)
+        return "%s(%r)" % (self.__name__, self.head)
 
     def __len__(self) -> int:
         """
@@ -335,68 +345,100 @@ class SinglyLinkedList:
         """
         return self.__sizeof__() + getsizeof(self)
 
-    def __split_linked_list(self, head: Node) -> Tuple[Node, Node]:
+    def __split_in_half(self, head: Node) -> Tuple[typeNode, typeNode]:
         """
-        Split the linked list using front-back splitting
+        Split the linked list in half using front-back splitting
         """
         if head is None or head.next is None:
-            left_half = head
-            right_half = None
-        else:
-            slow = head
-            fast = head.next
-            while fast:
+            return head, None
+
+        left_half = None
+        right_half = None
+
+        slow = head
+        fast = head.next
+
+        while fast:
+            fast = fast.next
+            if fast:
+                slow = slow.next
                 fast = fast.next
-                if fast:
-                    slow = slow.next
-                    fast = fast.next
-            left_half = head
-            right_half = slow.next
+
+        left_half = head
+        right_half = slow.next
+        slow.next = None
+
         return left_half, right_half
 
-    def __merge(self, left_half: Node, right_half: Node, reverse: bool = False) -> Node:
+    def __merge(self, left_half: typeNode, right_half: typeNode) -> typeNode:
         """
         Merge the divided linked list
         """
-        if left_half is None:
+        if left_half is None and right_half is not None:
             return right_half
-        if right_half is None:
+        elif right_half is None:
             return left_half
+
+        merged = None
         cur = None
-        head = None
-        while left_half and right_half:
-            if left_half.data <= right_half.data:
-                node = left_half
-                left_half = left_half.next
+        node = None
+        l_ptr = left_half
+        r_ptr = right_half
+
+        while l_ptr and r_ptr:
+            if self.__desc:
+                if l_ptr.data >= r_ptr.data:
+                    node = l_ptr
+                    l_ptr = l_ptr.next
+                else:
+                    node = r_ptr
+                    r_ptr = r_ptr.next
             else:
-                node = right_half
-                right_half = right_half.next
-            if not head:
-                head = node
+                if l_ptr.data <= r_ptr.data:
+                    node = l_ptr
+                    l_ptr = l_ptr.next
+                else:
+                    node = r_ptr
+                    r_ptr = r_ptr.next
+
+            if not cur:
                 cur = node
+                cur.next = None
+                merged = cur
             else:
                 cur.next = node
                 cur = cur.next
-        cur.next = left_half or right_half
-        return head
 
-    def __merge_sort(self, head: Node, desc: bool = False) -> Node:
+        if l_ptr:
+            cur.next = l_ptr
+
+        if r_ptr:
+            cur.next = r_ptr
+
+        return merged
+
+    def __merge_sort(self, head: typeNode) -> typeNode:
         """
         Sorts the linked list using MergeSort
         """
         if head is None or head.next is None:
-            return
-        left_half, right_half = self.__split_linked_list(head)
-        self.__merge_sort(left_half, desc)
-        self.__merge_sort(right_half, desc)
-        new_head = self.__merge(left_half, right_half, desc)
-        return new_head
+            return head
 
-    def sort(self, desc: bool = False) -> Node:
+        left_half, right_half = self.__split_in_half(head)
+
+        left_merged = self.__merge_sort(left_half)
+        right_merged = self.__merge_sort(right_half)
+
+        # Final merge before returning
+        return self.__merge(left_merged, right_merged)
+
+    def sort(self, desc: bool = False) -> None:
         """
-        Returns a sorted copy of the Linked List
+        Sorts the Linked List using MergeSort
         """
-        self.head = self.__merge_sort(self.head, desc)
+        if desc:
+            self.__desc = True
+        self.head = self.__merge_sort(self.head)
 
 
 if __name__ == "__main__":
@@ -406,9 +448,9 @@ if __name__ == "__main__":
     # Create the linked list
     print("\nCreating an empty linked list...")
     linked_list = SinglyLinkedList()
-    print(linked_list)
-    print("")
+    print("Linked List:", linked_list)
 
+    """
     # Add at the back of the linked list
     print("\nAdding data=1 at the back of the linked list...")
     linked_list.append(1)
@@ -418,6 +460,12 @@ if __name__ == "__main__":
     print("\nAdding data=2 at the begining of the linked list...")
     linked_list.prepend(2)
     print(linked_list)
+    """
+    print("\nInserting numbers [10, 99] in descending order...")
+    for x in range(10, 100):
+        linked_list.prepend(x)
+
+    print("Linked List:", linked_list)
 
     # Length of the linked list
     print("\nNumber of nodes in the linked list:", len(linked_list))
@@ -428,7 +476,7 @@ if __name__ == "__main__":
         linked_list.get_memory_footprint(),
         "Bytes",
     )
-
+    """
     # Search the linked list
     print("\nSearching for data=1 in the linked list...")
     print(linked_list.search(1))
@@ -454,3 +502,7 @@ if __name__ == "__main__":
 
     print("\nFinal state of the linked list...")
     print(linked_list)
+    """
+    print("\nSorting...")
+    linked_list.sort()
+    print("Linked List:", linked_list)

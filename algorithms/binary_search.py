@@ -9,7 +9,7 @@ Binary Search :: O(log n)
 def bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
     """Recursive Binary Search"""
     if right >= left:
-        mid = (left + right) // 2
+        mid = left + (right - left) // 2
         if arr[mid] == key:
             return mid
         if arr[mid] > key:
@@ -19,10 +19,12 @@ def bin_search_recur(arr: list, left: int, right: int, key: int) -> int:
     return -1
 
 
-def bin_search_iter(arr: list, left: int, right: int, key: int) -> int:
+def bin_search_iter(arr: list, key: int) -> int:
     """Iterative Binary Search"""
+    left = 0
+    right = len(arr) - 1
     while left <= right:
-        mid = (left + right) // 2
+        mid = left + (right - left) // 2
         if arr[mid] == key:
             return mid
         elif arr[mid] < key:
@@ -45,7 +47,7 @@ if __name__ == "__main__":
         print(KEY, "was found at index", sidx)
 
     # Using Iteration
-    sidx = bin_search_iter(ARR, 0, N - 1, KEY)
+    sidx = bin_search_iter(ARR, KEY)
     if sidx == -1:
         print(KEY, "was not found!")
     else:
